@@ -4,6 +4,8 @@ window.addEventListener('load', function() {
 
     executeJSIndex();
 
+    deplaceTiretMenu();
+
     function executeJSIndex() {
 
         const pathIsambert = document.querySelectorAll('#isambert g path');
@@ -32,6 +34,7 @@ window.addEventListener('load', function() {
                      scale: .93,
                      duration:.7,
                      delay: 1.4,
+                     height: '90vh'
                  });
              }
         }
@@ -92,7 +95,27 @@ window.addEventListener('load', function() {
             else if(lg <= 388 && lg > 354) { left = '34.5%'; }
             else if(lg <= 354 && lg > 326) { left = '33.9%'; }
 
-            gsap.to('h3.subtitle', { opacity:1, delay:5, left: '42.2%' });
+            gsap.to('h3.subtitle', { opacity:1, delay:5, left: '37.2%' });
+            gsap.to('.arrow-scroll', { opacity:1, delay:3, left: '50%' });
+        
+         
+                gsap.to(document.querySelectorAll('.menu li'),  {
+                         opacity:1,
+                          delay:3,
+                         stagger: .1
+                    });
+                
+            window.setTimeout(() => {
+
+                document.querySelector('.menu .tiret-anim').style.opacity = 1;
+
+            } ,3000)
+
+            gsap.to(document.querySelectorAll('nav .logos li'),  {
+                opacity:1,
+                 delay:3.5,
+                stagger: .1
+           });
 
         /*
          var text = document.querySelector(".textChange");
@@ -105,6 +128,37 @@ window.addEventListener('load', function() {
         tl.to(text, 0.8, {text:{value:"Développeur web", padSpace:true, type:'diff', ease:Linear.easeNone},delay:2, speed: 3});
         tl.to(text, 0.8, {text:{value:"Proactif", padSpace:true, type:'diff', ease:Linear.easeNone},delay:2, speed: 3});
  */
+    }
+
+    function deplaceTiretMenu () {
+
+       let liensMenu = document.querySelectorAll('.menu li a')
+       let tiretAnim = document.querySelector('.menu .tiret-anim')
+
+       liensMenu.forEach(elt => {
+
+        elt.addEventListener('click', (e)=> {
+            
+            e.preventDefault();
+            
+            //supprime le active des elts hors clique
+            liensMenu.forEach(elt1 => { elt1.classList.remove('active') })
+
+            elt.classList.add('active');
+
+            let distanceElt = elt.offsetLeft;
+            console.log(distanceElt)
+            let tailleElt = elt.offsetWidth;
+            
+            gsap.to(tiretAnim, {
+                left: distanceElt,
+                width: tailleElt,
+                ease: "elastic.out(1.2, 1)",
+                duration: 1.5
+
+            })
+        })
+       })
     }
 
 });
