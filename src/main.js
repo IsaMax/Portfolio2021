@@ -2,9 +2,26 @@ import gsap from 'gsap';
 
 window.addEventListener('load', function() {
 
-    executeJSIndex();
+    let circle = document.querySelector('.test');
+    let circleL = parseFloat(getComputedStyle(circle).left)
+    let circleT = parseFloat(getComputedStyle(circle).top)
 
+    circle.style.left = circleL + 'px';
+    circle.style.top = circleT + 'px';
+    let blocIntroWhite = document.querySelector('.section-intro .block-white');
+    let blocWRight;
+    let blocWLeft;
+    let blocWTop;
+    let blocWBottom;
+    let vx = 5;
+    let vy = 2;
+
+    executeJSIndex();
     deplaceTiretMenu();
+    window.setTimeout(infosBlocWhite, 3000);
+    window.setTimeout(() => circle.style.display = "block", 3050);
+    window.setTimeout(animCercle, 3100);
+    
 
     function executeJSIndex() {
 
@@ -160,6 +177,32 @@ window.addEventListener('load', function() {
         })
        })
     }
+
+    function infosBlocWhite() {
+
+        blocWLeft = blocIntroWhite.getBoundingClientRect().left;
+        blocWRight = blocIntroWhite.getBoundingClientRect().right;
+        blocWTop = blocIntroWhite.getBoundingClientRect().top;
+        blocWBottom = blocIntroWhite.getBoundingClientRect().bottom;
+    }
+    
+    function animCercle() {
+
+        if(parseFloat(circle.style.left) + 100 > blocWRight || parseFloat(circle.style.left) < blocWLeft) {
+
+           vx = -vx;
+        }
+
+        if(parseFloat(circle.style.top) < blocWTop || parseFloat(circle.style.top) + 100 > blocWBottom) {
+           
+            vy = -vy;
+        }
+        
+        circle.style.left = parseFloat(circle.style.left) + vx + 'px';
+        circle.style.top = parseFloat(circle.style.top) + vy + 'px';
+
+        requestAnimationFrame(animCercle)
+    }  
 
 });
 
