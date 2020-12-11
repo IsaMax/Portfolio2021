@@ -53,7 +53,7 @@ table {
 body {
 
     font-family: 'Inter', sans-serif;
-    overflow: hidden;
+    overflow-x: hidden;
     
 }
 
@@ -296,7 +296,7 @@ svg#maxime g path:nth-child(6) {
     }
 }
 
-nav {
+nav#nav {
     position: sticky;
     width: 95%;
     height: 55px;
@@ -434,10 +434,11 @@ p {
         font-weight: bold;
     }
     h2 {
-        font-size: 1.2em;
+        font-size: 1.1em;
         font-weight: bold;
         margin-bottom: 1rem;
         color: #7c3aed;
+        text-transform: uppercase;
     }
 }
 
@@ -445,7 +446,7 @@ p {
 
 #aPropos {
 
-    margin-bottom: 5rem;
+    margin-bottom: 10rem;
 
     .bloc-dev {
         display: flex;
@@ -470,6 +471,151 @@ p {
 }
 
 
+//Portfolios
+
 #portfolios {
 
+    margin-bottom: 10rem;
+
+    .en-tete {
+        margin-bottom: 3rem;
+    }
+
+    .portfolios--projets {
+
+        nav {
+            position: relative;
+
+            .bulle-hover {
+                display: block;
+                position: absolute;
+                width: 40px;
+                top: -7px;
+                left: 0;
+                border-top: 3px solid #f91919;
+            }
+
+            ul {
+                display: flex;
+
+                li {
+                    &:not(:last-child) {
+                        margin-right: 2rem;
+                    }
+
+                    a {
+                        color: #6b7280;
+                        font-weight: bold;
+                        text-decoration: none;
+                        font-size: 1.1em;
+                    }
+                }
+            }
+        }
+
+        .grid {
+            position: relative;
+            margin-top: 3rem;
+            height: auto;
+            transition: all .4s;
+            max-height: 1000px;
+            transition: all .8s ease-in;
+            
+            .projet--card {
+                position: absolute;
+                transform-style: preserve-3d;
+                overflow: hidden;
+                width: 448px;
+                height: 280px;
+                filter: drop-shadow(2px 4px 6px gray);
+
+                &:hover {
+                    img {
+                        transform: translateY(0) scale(1.2);
+                        filter: drop-shadow(2px 4px 6px gray) brightness(0.6);
+                    }
+                    
+                    .cell-hover {
+                        top: 0;
+                        opacity: 1;
+                       
+                        .categories-projet { 
+                            opacity: 1;
+
+                            span {
+                                opacity: 1;
+                            }
+                        }
+                    }
+                }
+
+                &::after {
+
+                    content: "";
+                    height: 65px;
+                    width: 100%;
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    background-image: linear-gradient(to top, #000000b3, transparent);
+                
+                }
+
+                img {
+                    transform: translateY(20px) scale(1.2);
+                    width: 448px;
+                    height: 280px;
+                    object-fit: fill;
+                    transition: all .4s;
+                }
+
+                .cell-hover {
+                    z-index: 5;
+                    width: 448px;
+                    height: 280px;
+                    position: absolute;
+                    height: 100%;
+                    width: 100%;
+                    top: 54%;
+                    left: 0;
+                    transition: all .3s ease-out;
+
+                    h3 {
+                        position: absolute;
+                        text-transform: uppercase;
+                        top: 33%;
+                        text-align: center;
+                        width: 100%;
+                        color: #FFF;
+                        font-size: 1.2em;
+                        font-weight: bold;
+                    }
+                    
+                    .categories-projet {
+                        position: absolute;
+                        top: 53%;
+                        left: 50%;
+                        opacity: 0;
+                        transform: translateX(-50%);
+                        transition: all .3s ease-out;
+                        color: #FFF;
+
+                        span {
+                            display: block;
+                            border: 1px solid;
+                            text-align: center;
+                            padding: 3px;
+                            opacity: 0;
+                            transition: .3s all .25s;
+
+                            &:not(:last-child) {
+                                margin-bottom: 10px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
 }

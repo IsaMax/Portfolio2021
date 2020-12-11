@@ -64,7 +64,7 @@
         
         </header> -->
 
-        <nav>
+        <nav id="nav">
             <ul class="menu">
                 <span class="tiret-anim"></span>
                <li><a href="" class="active">Accueil</a></li>
@@ -123,122 +123,137 @@
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M21.698 10.658l2.302 1.342-12.002 7-11.998-7 2.301-1.342 9.697 5.658 9.7-5.658zm-9.7 10.657l-9.697-5.658-2.301 1.343 11.998 7 12.002-7-2.302-1.342-9.7 5.657zm12.002-14.315l-12.002-7-11.998 7 11.998 7 12.002-7z"/></svg>
                         </div>
-                        <h2>Des projets, des projets... et des progrès !</h2>
-                        <h3>Mes Projets</h3>
+                        <h2>De projets en progrès</h2>
+                        <h3>Mes Derniers Projets</h3>
                     </div>
 
                     <section class="portfolios--projets">
                         <nav>
+                            <span class="bulle-hover"></span>
                             <ul>
-                                <li>Intégration</li>
-                                <li>Drupal8</li>
-                                <li>Wordpress</li>
-                                <li>Projets</li>
-                                <li>Entrainement</li>
+                                <li><a href="#" data-tri="all">Tous</a></li>
+                                <li><a href="#" data-tri="integration">Intégration</a></li>
+                                <li><a href="#" data-tri="drupal">Drupal8</a></li>
+                                <li><a href="#" data-tri="wordpress">Wordpress</a></li>
+                                <li><a href="#" data-tri="projets">Projets</a></li>
+                                <li><a href="#" data-tri="">Entrainement</a></li>
                             </ul>
                         </nav>
 
-                        <div class="grid">
-                            <div class="test1"></div>
-                            <div class="test2"></div>
-                            <div class="test3"></div>
+                        <div class="wrapper--grid">
+                            <div class="grid">
 
-                            <div class="grid--1">
-                                <img src="" alt="">
+                                <div class="projet--card" data-categorie="integration">
+                                    <img src="https://picsum.photos/500/350?random=1" alt="">
 
-                                <div class="cell-hover">
-                                    <div class="nom-projet"></div>
-                                    <div class="categories-projet">
-                                        <span></span>
-                                        <span></span>
+                                    <div class="cell-hover">
+                                        <h3 class="nom-projet">Le coeur de vivescia</h3>
+                                        <div class="categories-projet">
+                                            <span>html5</span>
+                                            <span>css3</span>
+                                            <span>javascript</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="grid--2">
-                                <img src="" alt="">
-                                
-                                <div class="cell-hover">
-                                    <div class="nom-projet"></div>
-                                    <div class="categories-projet">
-                                        <span></span>
-                                        <span></span>
+
+                                <div class="projet--card" data-categorie="drupal">
+                                    <img src="https://picsum.photos/500/350?random=2" alt="">
+                                    
+                                    <div class="cell-hover">
+                                        <h3 class="nom-projet">CC Seine et Aube</h3>
+                                        <div class="categories-projet">
+                                        <span>html5</span>
+                                            <span>css3</span>
+                                            <span>javascript</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="grid--3">
-                                <img src="" alt="">
-                                
-                                <div class="cell-hover">
-                                    <div class="nom-projet"></div>
-                                    <div class="categories-projet">
-                                        <span></span>
-                                        <span></span>
+
+                                <div class="projet--card" data-categorie="projets">
+                                    <img src="https://picsum.photos/500/350?random=3" alt="">
+                                    
+                                    <div class="cell-hover">
+                                        <h3 class="nom-projet">champagne Pertois-Moriset</h3>
+                                        <div class="categories-projet">
+                                            <span>html5</span>
+                                            <span>css3</span>
+                                            <span>javascript</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="grid--4">
-                                <img src="" alt="">
-                                
-                                <div class="cell-hover">
-                                    <div class="nom-projet"></div>
-                                    <div class="categories-projet">
-                                        <span></span>
-                                        <span></span>
+
+                                <div class="projet--card" data-categorie="wordpress">
+                                    <img src="https://picsum.photos/500/350?random=4" alt="">
+                                    
+                                    <div class="cell-hover">
+                                        <h3 class="nom-projet">Projet 5 OC</h3>
+                                        <div class="categories-projet">
+                                            <span>html5</span>
+                                            <span>css3</span>
+                                            <span>javascript</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="grid--5">
-                                <img src="" alt="">
-                                
-                                <div class="cell-hover">
-                                    <div class="nom-projet"></div>
-                                    <div class="categories-projet">
-                                        <span></span>
-                                        <span></span>
+
+                                <div class="projet--card" data-categorie="drupal">
+                                    <img src="https://picsum.photos/500/350?random=5" alt="">
+                                    
+                                    <div class="cell-hover">
+                                        <h3 class="nom-projet">Merci Julie</h3>
+                                        <div class="categories-projet">
+                                            <span>html5</span>
+                                            <span>css3</span>
+                                            <span>javascript</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="grid--6">
-                                <img src="" alt="">
-                                
-                                <div class="cell-hover">
-                                    <div class="nom-projet"></div>
-                                    <div class="categories-projet">
-                                        <span></span>
-                                        <span></span>
+
+                                <div class="projet--card" data-categorie="wordpress">
+                                    <img src="https://picsum.photos/500/350?random=6" alt="">
+                                    
+                                    <div class="cell-hover">
+                                        <h3 class="nom-projet"></h3>
+                                        <div class="categories-projet">
+                                            <span>html5</span>
+                                            <span>css3</span>
+                                            <span>javascript</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="grid--7">
-                                <img src="" alt="">
-                                
-                                <div class="cell-hover">
-                                    <div class="nom-projet"></div>
-                                    <div class="categories-projet">
-                                        <span></span>
-                                        <span></span>
+
+                                <div class="projet--card" data-categorie="integration">
+                                    <img src="https://picsum.photos/500/350?random=7" alt="">
+                                    
+                                    <div class="cell-hover">
+                                        <h3 class="nom-projet"></h3>
+                                        <div class="categories-projet">
+                                            <span></span>
+                                            <span></span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="grid--8">
-                                <img src="" alt="">
-                                
-                                <div class="cell-hover">
-                                    <div class="nom-projet"></div>
-                                    <div class="categories-projet">
-                                        <span></span>
-                                        <span></span>
+
+                                <div class="projet--card" data-categorie="projets"> 
+                                    <img src="https://picsum.photos/500/350?random=8" alt="">
+                                    
+                                    <div class="cell-hover">
+                                        <h3 class="nom-projet"></h3>
+                                        <div class="categories-projet">
+                                            <span></span>
+                                            <span></span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="grid--9">
-                                <img src="" alt="">
-                                
-                                <div class="cell-hover">
-                                    <div class="nom-projet"></div>
-                                    <div class="categories-projet">
-                                        <span></span>
-                                        <span></span>
+
+                                <div class="projet--card" data-categorie="projets">
+                                    <img src="https://picsum.photos/500/350?random=9" alt="">
+                                    
+                                    <div class="cell-hover">
+                                        <h3 class="nom-projet"></h3>
+                                        <div class="categories-projet">
+                                            <span></span>
+                                            <span></span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

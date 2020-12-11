@@ -2,7 +2,7 @@ import gsap from 'gsap';
 
 window.addEventListener('load', function() {
 
-    let circle = document.querySelector('.test');
+/*     let circle = document.querySelector('.test');
     let circleL = parseFloat(getComputedStyle(circle).left)
     let circleT = parseFloat(getComputedStyle(circle).top)
 
@@ -22,6 +22,9 @@ window.addEventListener('load', function() {
     window.setTimeout(() => circle.style.display = "block", 3050);
     window.setTimeout(animCercle, 3100);
     
+ */
+
+    bulleHover();
 
     function executeJSIndex() {
 
@@ -203,6 +206,152 @@ window.addEventListener('load', function() {
 
         requestAnimationFrame(animCercle)
     }  
+
+    function bulleHover() {
+
+        let bulle = document.querySelector('.portfolios--projets .bulle-hover');
+
+        let liensProjets = document.querySelectorAll('.portfolios--projets nav a');
+
+        let liensActifPrecedent = 0;
+        let liensActifL = document.querySelector('.portfolios--projets nav a:first-child');
+
+        liensProjets.forEach(elt => {
+
+            elt.addEventListener('click', (e) => {
+
+                e.preventDefault();
+
+                liensActifPrecedent = document.querySelector('.portfolios--projets nav a.active');
+             
+                liensProjets.forEach(elt => elt.classList.remove('active'))
+                
+                elt.classList.add('active');
+
+                liensActifL = liensActifPrecedent !== null ? liensActifPrecedent.offsetLeft : 0;  
+                let liensActifW = liensActifPrecedent !== null ? liensActifPrecedent.offsetWidth : 0;                
+
+                let lgElt = elt.offsetWidth;
+                let posElt = elt.offsetLeft;
+
+                if(liensActifL <= posElt) {
+
+                    gsap.to(bulle, {
+                        width: posElt+lgElt-liensActifL,
+                        duration: .1,
+                       ease:"power2.out"
+                    })
+    
+                    gsap.to(bulle, {
+                        delay: .1,
+                        left:posElt,
+                        width: lgElt,
+                       ease:"power2.out"
+                    })    
+                }
+                else {
+
+                    gsap.to(bulle, {
+                        left: posElt,
+                        width: liensActifL - posElt + liensActifW,
+                      duration: .1,
+                      ease:"power2.out"
+                    })
+                
+                    gsap.to(bulle, {
+                        delay: .1,
+                        width: lgElt,
+                        ease:"power2.out"
+                    })    
+                }
+            });
+        })
+    }   
+
+    const eltsGrille = document.querySelectorAll('.grid .projet--card');
+    afficherGrille(eltsGrille)
+
+    function afficherGrille(eltsAAfficher, eltAMasquer = []) {
+
+        let largeurElt = 0;
+        let hauteurElt = 0;
+        const gap = 24;
+        const largeurGrille = document.querySelector('#portfolios .grid').clientWidth;
+        let largeurTot = 0;
+        let hauteurLigne = 0;
+
+        eltsAAfficher.forEach(elt => {
+            
+            largeurElt = elt.clientWidth;
+            hauteurElt = elt.clientHeight;
+
+            eltAMasquer.forEach(eltam => {
+
+                gsap.to(eltam, { scale: 0 })
+            })
+
+            gsap.fromTo(elt, {
+                scale: 0,
+                left: Math.floor(Math.random() * (800 - 50) + 50),
+                top: Math.floor(Math.random() * (400 - 50) + 50)
+            }, {
+                scale: 1,
+                left: largeurTot,
+                top: hauteurLigne,
+            })
+
+            if((largeurTot+largeurElt+gap) <= largeurGrille) 
+                largeurTot += largeurElt + gap;
+            
+            else {
+                hauteurLigne += hauteurElt + gap;
+                largeurTot = 0;
+            }
+        })
+
+        document.querySelector('.grid').classList.add('.nouvelleTaille');
+        document.querySelector('.grid.nouvelleTaille').style.maxHeight = hauteurLigne  +'px';
+
+        trierGrille();
+    }
+
+    //faire hauteur automatique
+    function trierGrille() {
+
+        /* utiliser l'écouteur resize pour ajuster la grille en fonction de la taille d'écran */
+
+        const navTri = document.querySelectorAll('#portfolios nav a');
+        const listeEltsNonTrier = document.querySelectorAll('#portfolios .grid .projet--card');
+
+        let listeEltsTrier = [];
+        let listeEltsAMasquer = [];
+        let dataTri = "";
+
+        navTri.forEach(elt => {
+
+            elt.addEventListener('click', (e) => {
+
+                dataTri = elt.dataset.tri;
+
+                if(dataTri === 'all')
+                    afficherGrille(listeEltsNonTrier);
+
+                else {
+                    
+                    listeEltsNonTrier.forEach(elt => {
+                        
+                        if(elt.dataset.categorie === dataTri)
+                            listeEltsTrier.push(elt);
+                        else
+                            listeEltsAMasquer.push(elt);
+                    })
+                    afficherGrille(listeEltsTrier, listeEltsAMasquer);
+                }
+            });           
+        })
+
+        elt.removeEventListener('click');
+    }
 
 });
 
